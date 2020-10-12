@@ -1,0 +1,5 @@
+Lưu ý:
+Phải cài đặt composer
+phải dùng composer require mongodb/mongodb để liên kết csdl môngodb
+
+http://localhost:88/QuanLyPhongTro/ChatRealtime/getChatView Controller: ChatRealtimeController method:getChatView view: ChatRealtime/getChat.php
