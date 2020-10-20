@@ -30,7 +30,7 @@
 			$to = isset($_POST["received_id"]) ? $_POST["received_id"] : '';
 			$message = isset($_POST["message"]) ? $_POST["message"] : '';
 			$is_read = 0;
-			// $this->messageModel->createMessage($from, $to, $message, $is_read);
+			$this->messageModel->createMessage($from, $to, $message, $is_read);
 
 			$options = array(
 		    'cluster' => 'eu',

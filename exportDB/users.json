@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "5f80688682390000ac005c33"
+  },
+  "username": "qakhudaubuon12@gmail.com",
+  "name": "Hai",
+  "user_id": 1,
+  "password": "123456"
+},{
+  "_id": {
+    "$oid": "5f81736d165bbc81be735229"
+  },
+  "username": "hainguyenvan6799@gmail.com",
+  "name": "Thu",
+  "user_id": 2,
+  "password": "123456"
+},{
+  "_id": {
+    "$oid": "5f839ccfdac9ab0f3f6cb083"
+  },
+  "username": "ptud2020@gmail.com",
+  "name": "abc",
+  "password": "123456",
+  "user_id": 3
+}]

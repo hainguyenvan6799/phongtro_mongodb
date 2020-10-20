@@ -15,6 +15,16 @@
 			// {
 			// 	echo $m->message;
 			// }
+
+			$bulk = new MongoDB\Driver\BulkWrite;
+			$bulk->update(
+			    [ 'from' => (int)$user_id, 'to'=> $my_id, 'is_read' => 0],
+			    ['$set' => ['is_read' => 1]],
+			    ['multi' => true, 'upsert' => false]
+			);
+
+			$result = $this->mongoConnection->executeBulkWrite("phongtrodb.message", $bulk);
+			
 			return $message;
 		}
 

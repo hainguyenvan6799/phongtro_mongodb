@@ -235,6 +235,7 @@
 			user_id = $(this).attr("data-userId");
 			$.get("../ChatRealtime/chatWith/" + user_id, function(data){
 				$(".messages").html(data);
+                scrollToBottomFunc();
 			});
 		});
 
@@ -250,7 +251,7 @@
           if(data["from"] == my_id)
           {
             $('#' + data["to"]).click();
-            alert("Tao da click");
+            // alert("Tao da click");
           }
           else if(my_id == data["to"])
           {
@@ -258,8 +259,8 @@
             // alert(my_id);
             if(data["from"] == user_id)
             {
-                // $('#' + data["from"]).click();
-                alert("Yes");
+                $('#' + data["from"]).click();
+                // alert("Yes");
             }
             else
             {
@@ -301,6 +302,14 @@
                     });
         }
     });
+
+    // make a function to scroll down auto
+    function scrollToBottomFunc() {
+        $('.message-wrapper').animate({
+            scrollTop: $('.message-wrapper').get(0).scrollHeight
+        }, 50);
+    }
+
 	});
 </script>
 </html>

@@ -3,3 +3,26 @@ Phải cài đặt composer
 phải dùng composer require mongodb/mongodb để liên kết csdl môngodb
 
 http://localhost:88/QuanLyPhongTro/ChatRealtime/getChatView Controller: ChatRealtimeController method:getChatView view: ChatRealtime/getChat.php
+
+-- lấy array của BSONArray trong mongodb
+object->bsonSerialize();
+
+--Kiểm tra xem trong mảng có giá trị nào hay không
+in_array(value, mảng);
+
+--Thêm một phần từ vào mảng trong mongodb
+ví dụ như:
+
+{
+	"name":"ABC",
+	"age":18,
+	"favorite": ["swimming", ...]
+}
+
+muốn thêm vào mảng favorite ta sử dụng:
+$update = $notificationCollection->updateOne(
+		  // 	["notifiId" => 1], 
+		  // 	['$push' => ["user_read" => 1]] // đẩy 1 giá trị vào một mảng
+		  // );
+
+

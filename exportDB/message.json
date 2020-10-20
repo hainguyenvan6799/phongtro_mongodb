@@ -1,0 +1,136 @@
+[{
+  "_id": {
+    "$oid": "5f808b7882390000ac005c42"
+  },
+  "from": 1,
+  "to": 3,
+  "message": "Lorem ispum",
+  "is_read": "0"
+},{
+  "_id": {
+    "$oid": "5f808b7882390000ac005c43"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "Lorem ispum",
+  "is_read": "0"
+},{
+  "_id": {
+    "$oid": "5f82f459bbe4f3e2d2e052e1"
+  },
+  "from": 2,
+  "to": 1,
+  "message": "Lorem ispum 2",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f8302e6de78000074003f65"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "ABC",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f830657de78000074003f66"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "abc",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f83070ede78000074003f67"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "Nguyen Van Hai",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f830a95de78000074003f68"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "Try my best",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f83958f207400000a002ce5"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "I'm feeling so bad",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f839da9207400000a002ce8"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "abc",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f839dde207400000a002ce9"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "abcxyz",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f839f4a207400000a002cec"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "PTT",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f839f4e207400000a002ced"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "PTT",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f839fd0207400000a002cee"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "abc",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f83e5fa207400000a002cef"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "Test",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f83e619207400000a002cf0"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "Test new",
+  "is_read": 1
+},{
+  "_id": {
+    "$oid": "5f83e9b75dc03b666d9cd33f"
+  },
+  "from": "2",
+  "is_read": 1,
+  "to": 1
+},{
+  "_id": {
+    "$oid": "5f83eb33207400000a002cf1"
+  },
+  "from": 1,
+  "to": 2,
+  "message": "abc",
+  "is_read": 0
+}]
