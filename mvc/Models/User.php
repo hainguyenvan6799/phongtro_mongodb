@@ -6,20 +6,22 @@
 				"username" =>  $username,
 				"password" => $password
 			);
-			$result = $this->collectionUser->insertOne($document);
+			$result = $this->userCollection->insertOne($document);
 			echo 'Register Successfully';
 		}
 
 		public function checkForLogin($username, $password)
 		{
-			$userCollection = (new MongoDB\Client)->phongtrodb->users;
+			// $userCollection = (new MongoDB\Client)->phongtrodb->users;
 			// $this->filter =['$and' => [['username'=> $username], ['password'=>$password]]];
 			// $this->options = [];
-			$result = $userCollection->find(['username'=>$username, 'password'=>$password]);
+			$result = $this->userCollection->find(['username'=>$username, 'password'=>$password]);
 			if($result)
 			{
 				$_SESSION["username"] = $username;
 				$_SESSION["password"] = $password;
+				$_SESSION["user_type"] = "user";
+				echo $_SESSION["username"];
 				foreach($result as $r)
 				{
 					// echo $r->username . '<br>';

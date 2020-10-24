@@ -29,20 +29,20 @@
 		}
 
 		public function createMessage($from, $to, $message, $is_read){
-			$messageCollection = (new MongoDB\Client)->phongtrodb->message;
+			// $messageCollection = (new MongoDB\Client)->phongtrodb->message;
 			$document = [
 				"from" => $from,
 				"to" => (int)$to,
 				"message" => $message,
 				"is_read" => $is_read
 			];
-			$messageCollection->insertOne($document);
+			$this->messageCollection->insertOne($document);
 		}
 
 		public function countMessageNoRead($from){
 			$count = 0;
 			$to = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : "";
-			$messageCollection = (new MongoDB\Client)->phongtrodb->message;
+			// $messageCollection = (new MongoDB\Client)->phongtrodb->message;
 			$ops = [
 				[
 					'$lookup' => [
@@ -69,7 +69,7 @@
 
 					
 			];
-			$result = $messageCollection->aggregate($ops);
+			$result = $this->messageCollection->aggregate($ops);
 			foreach($result as $r)
 			{
 				$count = $r["count"];

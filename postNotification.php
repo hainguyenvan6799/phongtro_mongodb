@@ -27,6 +27,7 @@
 		  $notifiDetail = $notificationCollection->findOne(["notifiId" => 1]);
 		  // echo in_array(1, $notifiDetail->user_read);
 		  print_r(gettype($notifiDetail->user_read->bsonSerialize()));
+		  print_r($notifiDetail->user_read->bsonSerialize());
 		  echo in_array(5, $notifiDetail->user_read->bsonSerialize());
 		  
 

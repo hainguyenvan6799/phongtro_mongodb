@@ -9,8 +9,8 @@
 			$this->view("Register/registerForm");
 		}
 		public function postFormRegister(){
-			$userName = mysql_real_escape_string($_POST["username"]);
-			$password = mysql_real_escape_string($_POST["password"]);
+			$userName = $_POST["username"];
+			$password = $_POST["password"];
 			$this->userModel->createNewUser($userName, $password);
 		}
 	}
