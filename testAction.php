@@ -22,7 +22,7 @@
         if($v > 1)$ret[] = $v . $k ;
         if($v == 1)$ret[] = $v . $k;
         }
-    array_splice($ret, count($ret)-1, 0, 'and');
+    array_splice($ret, count($ret)-1, 0, 'và');
     $ret[] = 'trước.';
    
     return join(' ', $ret);
@@ -37,28 +37,93 @@
 
 	if($_POST["action"] == "fetch_data")
 	{
+		$friend_id = 0;
 		$users = $userCollection->find(
-			// ["last_login" => ['$gt' => $time]]
+			['user_id'=>$_SESSION["user_id"]]
 		);
+		echo '<table id="friends_table">';
+
+		echo '<tr><th>Friends</th><th>Status</th></tr>';
 		foreach($users as $u)
 		{
-			if(strtotime($u->last_login) > $time)
+			foreach($u->relationship as $r)
 			{
-				// echo $u->last_login . '--' . $datetime . '<br>';
-				echo $u->username . 'đang online';
-				echo '<br>';
-				echo '---------';
+
+				if($r->status == "f")
+				{
+					// echo $r->friend_id . '<br>';
+					echo '<tr>';
+					$friend = $userCollection->findOne(['user_id' => $r->friend_id]);
+					if(strtotime($friend->last_login) > $time){
+						if($friend->name == "qakhudaubuon")
+						{
+							echo '<td><button class="nhanvao addClass" id="'.$friend->user_id.'" friend_name="'.$friend->name.'">Chủ phòng trọ</button></td>';
+							echo '<td>Online</td>';	
+						}
+						else
+						{
+							echo '<td><button class="nhanvao addClass" id="'.$friend->user_id.'" friend_name="'.$friend->name.'">'.$friend->name.'</button></td>';
+							echo '<td>Online</td>';	
+						}
+						
+					}
+					else
+					{
+						echo '<td><button class="nhanvao addClass" id="'.$friend->user_id.'" friend_name="'.$friend->name.'" >' . $friend->name.'</button></td>';
+						echo '<td>Đã hoạt động '.time_elapsed_B($timestamp - strtotime($friend->last_login)).'</td>';
+					}
+					echo '</tr>';
+				}
 			}
-			else
-			{
-				$distance = $timestamp - strtotime($u->last_login);
-				echo $timestamp . '<br>';
-				echo $time . '<br>';
-				echo $distance . '<br>';
-				echo $u->username . ' đã hoạt động ' . time_elapsed_B($timestamp - strtotime($u->last_login)) . '<br>';
-			}
-			
 		}
+		echo '</table>';
+
+		// foreach($users as $u)
+		// {
+		// 	foreach($u->relationship as $r){
+		// 		$friend_id = $r->friend_id;
+		// 	}
+		// 	$friend = $userCollection->findOne(['user_id' => $friend_id]);
+
+		// 	if(strtotime($u->last_login) > $time)
+		// 	{
+		// 		// echo $u->last_login . '--' . $datetime . '<br>';
+		// 		echo '<button class="nhanvao" friend_name="'.$friend->name.'" id="'.$friend->user_id.'">'.$friend->name.'</button>' . ' đang online';
+		// 		echo '<br>';
+		// 	}
+		// 	else
+		// 	{
+		// 		// $distance = $timestamp - strtotime($u->last_login);
+		// 		// echo $timestamp . '<br>';
+		// 		// echo $time . '<br>';
+		// 		// echo $distance . '<br>';
+		// 		echo $u->name . ' đã hoạt động ' . time_elapsed_B($timestamp - strtotime($u->last_login)) . '<br>';
+		// 	}
+			
+		// }
+
+
+
+
 
 	}
  ?>
+ <script type="text/javascript">
+ 	$(".nhanvao").on("click", function(){
+		friend_id = $(this).attr("id");
+		chutro_id = 0;
+		friendClass = $('#' + friend_id);
+		name = $(this).attr("friend_name");
+   //        $('#qnimate').addClass('popup-box-on');
+
+   //        $('.popup-head-left').html('<img src="http://bootsnipp.com/img/avatars/bcf1c0d13e5500875fdd5a7e8ad9752ee16e7462.jpg" alt="iamgurdeeposahan">'+name+'');
+
+   //        $.get("ChatRealtime/chatWith/" + friend_id, function(data){
+			// 	$(".messages").html(data);
+   //              // scrollToBottomFunc();
+			// });
+		    	openMiniBoxChat(friend_id);
+
+          
+	});
+ </script>

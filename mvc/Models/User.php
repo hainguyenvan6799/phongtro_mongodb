@@ -26,6 +26,7 @@
 				{
 					// echo $r->username . '<br>';
 					$_SESSION["user_id"] = $r->user_id;
+					$_SESSION["name"] = $r->name;
 					// echo $r->user_id;
 				}
 				
@@ -41,6 +42,53 @@
 			$this->query = new MongoDB\Driver\Query($this->filter, $this->options);
 			$users = $this->mongoConnection->executeQuery("phongtrodb.users", $this->query);
 			return $users;
+		}
+
+		public function sendFrRequest($from, $friend_id, $action){
+			if($action == "friend_request")
+			{
+				$this->userCollection->updateOne(
+					['user_id' => $_SESSION["user_id"]],
+					['$push' => ['relationship' => 
+					[
+						'friend_id' => (int)$friend_id,
+						'status' => "p" //pending friend request
+					]
+				]]
+
+				);
+
+				$this->userCollection->updateOne(
+					['user_id' => (int)$friend_id],
+					['$push' => ['relationship' => 
+					[
+						'friend_id' => $_SESSION["user_id"],
+						'status' => "p" //pending friend request
+					]
+				]]
+
+				);
+			}
+		}
+
+		public function acceptFrRequest($from, $to){
+			$update = $this->userCollection->findOneAndUpdate(
+				['$and' =>[ ['user_id' => (int)$from], ['relationship' => ['friend_id' => (int)$to, 'status' => "p"]] ]],
+				['$set' => ['relationship.$.status' => "f"] ] 
+			);
+
+			$update2 = $this->userCollection->findOneAndUpdate(
+				['$and' =>[ ['user_id' => (int)$to], ['relationship' => ['friend_id' => (int)$from, 'status' => "p"]] ]],
+				['$set' => ['relationship.$.status' => "f"] ] 
+			);
+		}
+
+		public function getFriendsOfUser($user_login)
+		{
+			$user = $this->userCollection->find(
+				['$and' => [ ['user_id' => $user_login], ['relationship.status' => "f" ] ]]
+			);
+			return $user;
 		}
 	}
  ?>

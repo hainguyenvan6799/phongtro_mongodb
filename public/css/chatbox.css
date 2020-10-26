@@ -117,10 +117,8 @@ body
 .popup-box .popup-messages {
     background: #3f9684 none repeat scroll 0 0;
     height: 275px;
-    overflow: auto;
 }
 .direct-chat-messages {
-    overflow: auto;
     padding: 10px;
     transform: translate(0px, 0px);
     

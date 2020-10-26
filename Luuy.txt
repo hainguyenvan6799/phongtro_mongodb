@@ -25,4 +25,16 @@ $update = $notificationCollection->updateOne(
 		  // 	['$push' => ["user_read" => 1]] // đẩy 1 giá trị vào một mảng
 		  // );
 
-
+user khởi tạo 
+{
+    "username": "xyz@gmail.com",
+    "name": "xyz",
+    "user_id": 4,
+    "password": "123456",
+    "last_login": "2020-10-23 08:37:54",
+    "relationship": [{
+        "friend_id": 0,
+        "status": ""
+    }]
+}
+-- Khi ket ban mình sẽ set lại friend_id và status

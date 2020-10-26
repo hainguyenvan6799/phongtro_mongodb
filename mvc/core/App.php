@@ -2,8 +2,8 @@
 	// error_reporting(0);
 	class App{
 		//http://localhost:88/QuanLyPhongTro/Home/SayHi/1/2/3
-		protected $controller="Home";
-		protected $action = "SayHi";
+		protected $controller="ChatRealtime";
+		protected $action = "getChatBox";
 		protected $param = []; 
 
 		function __construct(){
